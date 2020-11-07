@@ -12,6 +12,6 @@ endif
 all: adxl335
 	
 adxl335: adxl335.c
-	$(CC) $(CFLAGS) $(INCLUDES) adxl335.c -o adxl335 -lwiringPi
+	$(CC) $(CFLAGS) $(INCLUDES) adxl335.c -o adxl335 -lwiringPi -pthread -lrt
 clean:	
 	rm -rf *o adxl335

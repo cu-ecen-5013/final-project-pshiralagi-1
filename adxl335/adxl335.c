@@ -13,6 +13,7 @@
 #include <time.h>
 #include <wiringPi.h>
 #include <pthread.h>
+#include <unistd.h>
 
 #define Z_AXIS 3
 

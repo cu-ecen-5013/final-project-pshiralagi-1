@@ -12,6 +12,7 @@
 #include <string.h>
 #include <time.h>
 #include <wiringPi.h>
+#include <pthread.h>
 
 #define Z_AXIS 3
 

@@ -16,14 +16,11 @@ ifeq ($(LDFLAGS),)
 	LDFLAGS = -pthread -lrt
 endif
 
-ACCC = adxl335/adxl335
-ACC = adxl335
+all: subsystems
 
-all: $(ACC)
-
-$(ACC): $(ACCC).c
-	$(CC) $(CFLAGS) $(ACCC).c -o $(ACC) $(LDFLAGS)
+subsystems:
+	cd adxl335 && $(MAKE)
 
 
 clean:
-	$(RM) $(ACC) *.o
+	(cd adxl335; make clean)

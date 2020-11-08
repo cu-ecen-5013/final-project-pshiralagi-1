@@ -19,7 +19,7 @@
 #define LED_PIN 1
 #define READ_DELAY 5000
 
-int led_value;
+bool led_value;
 
 void blink_led(void);
 void read_adxl335(void);
@@ -27,7 +27,7 @@ void read_adxl335(void);
 int main(int argc, char* argv[])
 {
     int i, status;
-	led_value = HIGH;
+	led_value = 1;
     for(i = 1; i < argc; i++)
 	{
 		if (strcmp(argv[i], "-d") == 0)
@@ -66,5 +66,5 @@ void read_adxl335(void)
 void blink_led(void)
 {
     digitalWrite (LED_PIN, led_value);
-	led_value != led_value;
+	led_value = !led_value;
 }

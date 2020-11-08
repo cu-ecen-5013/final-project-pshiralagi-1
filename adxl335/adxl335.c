@@ -43,18 +43,18 @@ int main(int argc, char* argv[])
 	}
     while(1)
     {
-	//pinMode (0, OUTPUT) ;
-    //digitalWrite (0, HIGH) ; delay (500) ;
-    //digitalWrite (0,  LOW) ; delay (500) ;
-    read_adxl335();
-	delay(1000);
+	pinMode (0, OUTPUT) ;
+    digitalWrite (0, HIGH) ; delay (500) ;
+    digitalWrite (0,  LOW) ; delay (500) ;
+    //read_adxl335();
+	//delay(1000);
     }
 }
 
 void read_adxl335(void)
 {
-    int z_axis_read;
+    volatile int z_axis_read;
     pinMode(Z_AXIS, INPUT);
     z_axis_read = analogRead(Z_AXIS);
-    printf("Value read from accelerometer is - %d", z_axis_read);
+    printf("Value read from accelerometer is - %d\n\r", z_axis_read);
 }

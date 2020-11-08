@@ -16,8 +16,10 @@
 #include <unistd.h>
 
 #define Z_AXIS 0
+#define LED_PIN 1
 #define READ_DELAY 5000
 
+void blink_led(void);
 void read_adxl335(void);
 
 int main(int argc, char* argv[])
@@ -41,20 +43,25 @@ int main(int argc, char* argv[])
 	{
 		exit(1);
 	}
+	pinMode(Z_AXIS, INPUT);
+	pinMode (LED_PIN, OUTPUT) ;
     while(1)
     {
-	//pinMode (0, OUTPUT) ;
-    //digitalWrite (0, HIGH) ; delay (500) ;
-    //digitalWrite (0,  LOW) ; delay (500) ;
-    read_adxl335();
-	delay(1000);
+		blink_led();
+    	read_adxl335();
+		delay(1000);
     }
 }
 
 void read_adxl335(void)
 {
-    volatile int z_axis_read;
-    pinMode(Z_AXIS, INPUT);
-    z_axis_read = analogRead(Z_AXIS);
-    printf("Value read from accelerometer is - %d\n\r", z_axis_read);
+    static int z_axis_read;    
+    z_axis_read = digitalRead(Z_AXIS);
+    printf("Accelerometer - %d\n\r", z_axis_read);
+}
+
+void blink_led(void)
+{
+    digitalWrite (LED_PIN, HIGH) ; delay (500) ;
+    digitalWrite (LED_PIN,  LOW) ; delay (500) ;
 }

@@ -23,7 +23,6 @@ void read_adxl335(void);
 int main(int argc, char* argv[])
 {
     int i, status;
-	volatile int wait;
     for(i = 1; i < argc; i++)
 	{
 		if (strcmp(argv[i], "-d") == 0)
@@ -47,8 +46,8 @@ int main(int argc, char* argv[])
 	pinMode (0, OUTPUT) ;
     digitalWrite (0, HIGH) ; delay (500) ;
     digitalWrite (0,  LOW) ; delay (500) ;
-    read_adxl335();
-	delay(1000);
+    //read_adxl335();
+	//delay(1000);
     }
 }
 

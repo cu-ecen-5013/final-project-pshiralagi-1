@@ -23,6 +23,7 @@ void read_adxl335(void);
 int main(int argc, char* argv[])
 {
     int i, status;
+	volatile int wait;
     for(i = 1; i < argc; i++)
 	{
 		if (strcmp(argv[i], "-d") == 0)
@@ -44,6 +45,8 @@ int main(int argc, char* argv[])
     while(1)
     {
         read_adxl335();
+	for (wait = 0; wait < 1000; wait++);
+
 	//delay(READ_DELAY);
     }
 }

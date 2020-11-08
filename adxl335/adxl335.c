@@ -44,10 +44,11 @@ int main(int argc, char* argv[])
 	}
     while(1)
     {
-        read_adxl335();
-	for (wait = 0; wait < 100000; wait++);
-
-	//delay(READ_DELAY);
+	pinMode (0, OUTPUT) ;
+    digitalWrite (0, HIGH) ; delay (500) ;
+    digitalWrite (0,  LOW) ; delay (500) ;
+    read_adxl335();
+	delay(1000);
     }
 }
 

@@ -25,6 +25,7 @@ void read_adxl335(void);
 int main(int argc, char* argv[])
 {
     int i, status;
+	int led_value = HIGH;
     for(i = 1; i < argc; i++)
 	{
 		if (strcmp(argv[i], "-d") == 0)
@@ -62,6 +63,6 @@ void read_adxl335(void)
 
 void blink_led(void)
 {
-    digitalWrite (LED_PIN, HIGH) ; delay (500) ;
-    digitalWrite (LED_PIN,  LOW) ; delay (500) ;
+    digitalWrite (LED_PIN, led_value);
+	led_value != led_value;
 }

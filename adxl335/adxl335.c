@@ -44,7 +44,7 @@ int main(int argc, char* argv[])
     while(1)
     {
         read_adxl335();
-	delay(READ_DELAY);
+	//delay(READ_DELAY);
     }
 }
 

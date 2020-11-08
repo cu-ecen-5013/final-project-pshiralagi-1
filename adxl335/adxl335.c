@@ -15,7 +15,7 @@
 #include <pthread.h>
 #include <unistd.h>
 
-#define Z_AXIS 11
+#define Z_AXIS 0
 #define READ_DELAY 5000
 
 void read_adxl335(void);

@@ -45,7 +45,7 @@ int main(int argc, char* argv[])
     while(1)
     {
         read_adxl335();
-	for (wait = 0; wait < 1000; wait++);
+	for (wait = 0; wait < 100000; wait++);
 
 	//delay(READ_DELAY);
     }
@@ -53,8 +53,8 @@ int main(int argc, char* argv[])
 
 void read_adxl335(void)
 {
-    int32_t z_axis_read;
+    int z_axis_read;
     pinMode(Z_AXIS, INPUT);
     z_axis_read = analogRead(Z_AXIS);
-    printf("Value read from accelerometer is - %ld", z_axis_read);
+    printf("Value read from accelerometer is - %d", z_axis_read);
 }

@@ -43,11 +43,11 @@ int main(int argc, char* argv[])
 	}
     while(1)
     {
-	pinMode (0, OUTPUT) ;
-    digitalWrite (0, HIGH) ; delay (500) ;
-    digitalWrite (0,  LOW) ; delay (500) ;
-    //read_adxl335();
-	//delay(1000);
+	//pinMode (0, OUTPUT) ;
+    //digitalWrite (0, HIGH) ; delay (500) ;
+    //digitalWrite (0,  LOW) ; delay (500) ;
+    read_adxl335();
+	delay(1000);
     }
 }
 

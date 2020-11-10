@@ -9,9 +9,13 @@ ifeq ($(CFLAGS),)
 	 CFLAGS = -g -Wall -Werror
 endif
 
-all: adxl335
+all: server client
 	
-adxl335: adxl335.c
-	$(CC) $(CFLAGS) $(INCLUDES) adxl335.c -o adxl335 -lwiringPi -pthread -lrt
+server: server.c
+	$(CC) $(CFLAGS) $(INCLUDES) server.c -o server -pthread -lrt
+
+client: client.c
+	$(CC) $(CFLAGS) $(INCLUDES) client.c -o client
+
 clean:	
-	rm -rf *o adxl335
+	rm -rf *o client server

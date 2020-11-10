@@ -2,11 +2,11 @@
 case "$1" in
     start)
         echo "Starting accelerometer application"
-        start-stop-daemon -S -n adxl335 -a /usr/bin/adxl335 -- -d
+        start-stop-daemon -S -n server -a /usr/bin/server -- -d
         ;;
     stop)
         echo "Stopping accelerometer application"
-        start-stop-daemon -K -n adxl335
+        start-stop-daemon -K -n server
         ;;
     *)
         echo "Usage: $0 {start|stop}"

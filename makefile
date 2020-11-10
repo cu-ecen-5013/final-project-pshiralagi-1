@@ -20,7 +20,9 @@ all: subsystems
 
 subsystems:
 	cd adxl335 && $(MAKE)
+	cd server && $(MAKE)
 
 
 clean:
 	(cd adxl335; make clean)
+	(cd server; make clean)

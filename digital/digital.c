@@ -40,7 +40,7 @@ int main(int argc, char* argv[])
 	
 	if(status != -1)
 	{
-		printf("Connected to accelerometer\n\r");
+		printf("Connected to digital applications\n\r");
 	}
 	else
 	{
@@ -60,7 +60,7 @@ void read_digital(void)
 {
     static int PIR_read;    
     PIR_read = digitalRead(PIR);
-    //printf("Accelerometer - %d\n\r", PIR_read);
+    printf("Accelerometer - %d\n\r", PIR_read);
 }
 
 void blink_led(void)

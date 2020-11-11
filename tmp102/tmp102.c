@@ -46,11 +46,11 @@ int main(int argc, char* argv[])
 			daemon(1, 1);
 		}	
 	} 
-	
+	printf("Entering while loop\n\r");
 	while(1)
 	{
 		tmp = poll_tmp(fd);
-		printf("Temperature is : %d", tmp);
+		printf("Temperature is : %d\n\r", tmp);
 		sleep(5);
 	}
 	return 0;
@@ -58,6 +58,7 @@ int main(int argc, char* argv[])
 
 int poll_tmp(int fd)
 {
+	printf("Polling temp\n\r");
 	int len, tmp, tmp_c;
 	char i2c_read[1];
 	if ((len = read(fd, i2c_read, 2) != 2))

@@ -1,7 +1,7 @@
 /*
- *  @filename: adxl335.c
+ *  @filename: digital.c
  *  @author: Pavan Shiralagi
- *  @description: Reads accelerometer values through analog pin
+ *  @description: Reads PIR values through digital pin and blinks LED
  *  @reference: http://wiringpi.com/reference/core-functions/
 */
 
@@ -15,14 +15,14 @@
 #include <pthread.h>
 #include <unistd.h>
 
-#define Z_AXIS 0
+#define PIR 0
 #define LED_PIN 1
 #define READ_DELAY 5000
 
 bool led_value;
 
 void blink_led(void);
-void read_adxl335(void);
+void read_digital(void);
 
 int main(int argc, char* argv[])
 {
@@ -46,21 +46,21 @@ int main(int argc, char* argv[])
 	{
 		exit(1);
 	}
-	pinMode(Z_AXIS, INPUT);
+	pinMode(PIR, INPUT);
 	pinMode (LED_PIN, OUTPUT) ;
     while(1)
     {
 		blink_led();
-    	read_adxl335();
+    	read_digital();
 		delay(1000);
     }
 }
 
-void read_adxl335(void)
+void read_digital(void)
 {
-    static int z_axis_read;    
-    z_axis_read = digitalRead(Z_AXIS);
-    printf("Accelerometer - %d\n\r", z_axis_read);
+    static int PIR_read;    
+    PIR_read = digitalRead(PIR);
+    //printf("Accelerometer - %d\n\r", PIR_read);
 }
 
 void blink_led(void)

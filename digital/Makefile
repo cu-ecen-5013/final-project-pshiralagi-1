@@ -9,9 +9,9 @@ ifeq ($(CFLAGS),)
 	 CFLAGS = -g -Wall -Werror
 endif
 
-all: adxl335
+all: digital
 	
-adxl335: adxl335.c
-	$(CC) $(CFLAGS) $(INCLUDES) adxl335.c -o adxl335 -lwiringPi -pthread -lrt
+digital: digital.c
+	$(CC) $(CFLAGS) $(INCLUDES) digital.c -o digital -lwiringPi -pthread -lrt
 clean:	
-	rm -rf *o adxl335
+	rm -rf *o digital

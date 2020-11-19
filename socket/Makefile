@@ -15,7 +15,7 @@ server: server.c
 	$(CC) $(CFLAGS) $(INCLUDES) server.c -o server -pthread -lrt
 
 client: client.c
-	$(CC) $(CFLAGS) $(INCLUDES) client.c -o client
+	$(CC) $(CFLAGS) $(INCLUDES) client.c -o client -pthread -lrt
 
 clean:	
 	rm -rf *o client server

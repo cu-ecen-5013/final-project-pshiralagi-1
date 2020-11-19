@@ -19,11 +19,11 @@ endif
 all: subsystems
 
 subsystems:
-	cd digital && $(MAKE)
 	cd socket && $(MAKE)
 	cd tmp102 && $(MAKE)
+	cd digital && $(MAKE)
 
 clean:
 	(cd digital; make clean)
-	(cd server; make clean)
+	(cd socket; make clean)
 	(cd tmp102; make clean)

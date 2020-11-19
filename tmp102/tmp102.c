@@ -16,11 +16,21 @@
 #include <linux/i2c-dev.h>
 #include <sys/ioctl.h>
 #include <fcntl.h>
+#include <sys/shm.h>
+#include <sys/stat.h>
+#include <sys/mman.h>
 
 #define I2C_ADDR 0x48
 #define I2C_BUS "/dev/i2c-1"
 
 int poll_tmp(int fd);
+void ipc_init(void);
+void ipc_tmp(int tmp);
+
+typedef struct {
+	int unique_id;
+	int tmp;
+} data;
 
 int main(int argc, char* argv[])
 {
@@ -47,10 +57,12 @@ int main(int argc, char* argv[])
 		}	
 	} 
 	printf("Entering while loop\n\r");
+	ipc_init();
 	while(1)
 	{
 		tmp = poll_tmp(fd);
 		printf("Temperature is : %d\n\r", tmp);
+		ipc_tmp(tmp);
 		sleep(5);
 	}
 	return 0;
@@ -77,3 +89,37 @@ int poll_tmp(int fd)
 	
 }
 
+void ipc_init(void)
+{
+	int fd_shared;
+	fd_shared = shm_open("shareTmp",  O_CREAT | O_RDWR, 0666);
+	if (fd_shared < 0)
+	{
+		perror("open");
+	}
+	ftruncate(fd_shared, 500);
+	if (close(fd_shared) < 0)
+	{
+		perror("close");
+	}
+}
+
+void ipc_tmp(int tmp)
+{
+	data temperature = {1, tmp};
+	data *temperature_ptr = &temperature;
+	data *temp_ptr = NULL;
+	int fd_shared;
+	fd_shared = shm_open("shareTmp", O_RDWR, 0666);
+	if (fd_shared < 0)
+	{
+		perror("open");
+	}
+	temp_ptr = (data *)mmap(NULL, sizeof(data), PROT_WRITE, MAP_SHARED, fd_shared, 0);
+	if (close(fd_shared) < 0)
+	{
+		perror("close");
+	}
+	memcpy((void *)(&temp_ptr[0]),(void*)temperature_ptr,sizeof(data));
+	munmap(temp_ptr,sizeof(data));
+}

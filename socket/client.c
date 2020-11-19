@@ -39,7 +39,7 @@ void func(int sockfd)
 	write(sockfd, buff, sizeof(buff)); 
 	bzero(buff, sizeof(buff)); 
 	read(sockfd, buff, sizeof(buff)); 
-	printf("From Server : %s", buff); 
+	printf("From Server : %s\n\r", buff); 
 } 
 
 int main(int argc, char *argv[]) 
@@ -107,7 +107,7 @@ void ipc(void)
 	}
 	memcpy((void*)temperature_ptr,(void*)(&temp_ptr[0]),sizeof(data));
 	printf("Temperature is %d\n\r", temp_ptr->tmp);
-	buff[0] = temp_ptr->tmp;
+	buff = temp_ptr->tmp;
 	munmap(temp_ptr,sizeof(data));
 }
 

@@ -107,7 +107,7 @@ void ipc(void)
 	}
 	memcpy((void*)temperature_ptr,(void*)(&temp_ptr[0]),sizeof(data));
 	printf("Temperature is %d\n\r", temp_ptr->tmp);
-	buff = temp_ptr->tmp;
+	*buff = temp_ptr->tmp;
 	munmap(temp_ptr,sizeof(data));
 }
 

@@ -25,22 +25,23 @@
 // Function designed for chat between client and server. 
 int func(int sockfd) 
 { 
-	int *temperature = NULL; 
+	char buff[MAX]; 
 	int n; 
 	// infinite loop for chat 
 	for (;;) 
 	{ 
+		bzero(buff, MAX); 
 
 		// read the message from client and copy it in buffer 
-		n = read(sockfd, temperature, sizeof(int));
+		n = read(sockfd, buff, sizeof(buff));
 		if (n < 0)
 		{
 			perror("read");
 			return -1;
 		}
 		// print buffer which contains the client contents 
-		printf("From client: %d\n\r ", *temperature); 
-		n = write(sockfd, temperature, sizeof(int));
+		printf("From client: %s\n\r ", buff); 
+		n = write(sockfd, buff, sizeof(buff));
 		if (n < 0)
 		{
 			perror("write");

@@ -32,15 +32,15 @@ typedef struct {
 	int unique_id;
 	int tmp;
 } data;
-int *temperature_send; 
+char buff[MAX]; 
 
 void func(int sockfd) 
 {
-	write(sockfd, temperature_send, sizeof(int)); 
-	//bzero(buff, sizeof(buff)); 
-	read(sockfd, temperature_send, sizeof(int)); 
-	printf("From Server : %d\n\r", *temperature_send);
-	//bzero(buff, sizeof(buff));  
+	write(sockfd, buff, sizeof(buff)); 
+	bzero(buff, sizeof(buff)); 
+	read(sockfd, buff, sizeof(buff)); 
+	printf("From Server : %s\n\r", buff);
+	bzero(buff, sizeof(buff));  
 } 
 
 int main(int argc, char *argv[]) 
@@ -93,7 +93,6 @@ int main(int argc, char *argv[])
 void ipc(void)
 {
 	data temperature;
-	int temp_to_send;
 	data *temperature_ptr = &temperature;
 	data *temp_ptr = NULL;
 	int fd_shared;
@@ -109,8 +108,7 @@ void ipc(void)
 	}
 	memcpy((void*)temperature_ptr,(void*)(&temp_ptr[0]),sizeof(data));
 	printf("Temperature is %d\n\r", temp_ptr->tmp);
-	temp_to_send = temp_ptr->tmp;
-	temperature_send = &temp_to_send;
+	sprintf(buff, "%d", temp_ptr->tmp);
 	munmap(temp_ptr,sizeof(data));
 }
 

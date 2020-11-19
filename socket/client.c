@@ -82,6 +82,7 @@ int main(int argc, char *argv[])
 		ipc();
 		// function for chat 
 		func(sockfd);
+		sleep(5);
 	}
 
 	// close the socket 

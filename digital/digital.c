@@ -22,11 +22,11 @@
 bool led_value;
 
 void blink_led(void);
-void read_digital(void);
+int read_digital(void);
 
 int main(int argc, char* argv[])
 {
-    int i, status;
+    int i, status, PIR;
 	led_value = 1;
     for(i = 1; i < argc; i++)
 	{
@@ -48,19 +48,28 @@ int main(int argc, char* argv[])
 	}
 	pinMode(PIR, INPUT);
 	pinMode (LED_PIN, OUTPUT) ;
+	count = 0;
     while(1)
     {
-		blink_led();
-    	read_digital();
+    	PIR = read_digital();
+		if (PIR == 1 || count != 0)
+ 		{
+			count++;
+			count = count % 100;
+			blink_led();
+		}
+		else
+			led_value = 0;
 		delay(1000);
     }
 }
 
-void read_digital(void)
+int read_digital(void)
 {
     static int PIR_read;    
     PIR_read = digitalRead(PIR);
     printf("Accelerometer - %d\n\r", PIR_read);
+	return (PIR_read);
 }
 
 void blink_led(void)

@@ -26,7 +26,7 @@ int read_digital(void);
 
 int main(int argc, char* argv[])
 {
-    int i, status, PIR;
+    int i, status, digital_read, count;
 	led_value = 1;
     for(i = 1; i < argc; i++)
 	{
@@ -51,8 +51,8 @@ int main(int argc, char* argv[])
 	count = 0;
     while(1)
     {
-    	PIR = read_digital();
-		if (PIR == 1 || count != 0)
+    	digital_read = read_digital();
+		if (digital_read == 1 || count != 0)
  		{
 			count++;
 			count = count % 100;

@@ -1,11 +1,11 @@
 #! /bin/sh
 case "$1" in
     start)
-        echo "Starting accelerometer application"
+        echo "Starting server application"
         start-stop-daemon -S -n server -a /usr/bin/server -- -d
         ;;
     stop)
-        echo "Stopping accelerometer application"
+        echo "Stopping server application"
         start-stop-daemon -K -n server
         ;;
     *)

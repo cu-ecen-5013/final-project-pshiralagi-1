@@ -34,6 +34,7 @@ typedef struct {
 } data;
 char buff[MAX]; 
 
+/*	Function to send and receive data	*/
 void func(int sockfd) 
 {
 	write(sockfd, buff, sizeof(buff)); 
@@ -90,6 +91,7 @@ int main(int argc, char *argv[])
 	close(sockfd); 
 }
 
+/*	Function to access shared memory	*/
 void ipc(void)
 {
 	data temperature;

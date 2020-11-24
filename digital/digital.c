@@ -4,7 +4,7 @@
  *  @description: Reads PIR values through digital pin and blinks LED
  *  @reference: http://wiringpi.com/reference/core-functions/
 */
-
+/*	Includes	*/
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
@@ -14,13 +14,14 @@
 #include <wiringPi.h>
 #include <pthread.h>
 #include <unistd.h>
-
+/*	Defines	*/
 #define PIR 0
 #define LED_PIN 1
 #define READ_DELAY 5000
 
 bool led_value;
 
+/*	Function declarations	*/
 void blink_led(void);
 int read_digital(void);
 
@@ -64,6 +65,7 @@ int main(int argc, char* argv[])
     }
 }
 
+/*	Function to read digital pin connected to PIR sensor	*/
 int read_digital(void)
 {
     static int PIR_read;    
@@ -72,6 +74,7 @@ int read_digital(void)
 	return (PIR_read);
 }
 
+/*	Function to blink LED	*/
 void blink_led(void)
 {
     digitalWrite (LED_PIN, led_value);

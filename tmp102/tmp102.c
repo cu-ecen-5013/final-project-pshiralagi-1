@@ -68,6 +68,7 @@ int main(int argc, char* argv[])
 	return 0;
 }
 
+/*	Function to read and format temperature	*/
 int poll_tmp(int fd)
 {
 	printf("Polling temp\n\r");
@@ -88,7 +89,7 @@ int poll_tmp(int fd)
 	return(0);
 	
 }
-
+/*	Function to initialize shared memory	*/
 void ipc_init(void)
 {
 	int fd_shared;
@@ -104,6 +105,7 @@ void ipc_init(void)
 	}
 }
 
+/*	Function to store temperature in shared memory	*/
 void ipc_tmp(int tmp)
 {
 	data temperature = {1, tmp};

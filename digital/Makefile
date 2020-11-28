@@ -14,4 +14,4 @@ all: digital
 digital: digital.c
 	$(CC) $(CFLAGS) $(INCLUDES) digital.c -o digital -lwiringPi -pthread -lrt
 clean:	
-	rm -rf *o digital
+	rm -rf *.o digital

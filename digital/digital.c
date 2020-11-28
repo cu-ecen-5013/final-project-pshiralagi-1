@@ -29,6 +29,7 @@ int main(int argc, char* argv[])
 {
     int i, status, digital_read, count;
 	led_value = 1;
+	/*	Daemonize program	*/
     for(i = 1; i < argc; i++)
 	{
 		if (strcmp(argv[i], "-d") == 0)
@@ -70,7 +71,7 @@ int read_digital(void)
 {
     static int PIR_read;    
     PIR_read = digitalRead(PIR);
-    printf("Accelerometer - %d\n\r", PIR_read);
+    printf("Detected - %d\n\r", PIR_read);
 	return (PIR_read);
 }
 

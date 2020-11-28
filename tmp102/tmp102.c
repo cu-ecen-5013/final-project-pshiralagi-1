@@ -2,6 +2,7 @@
  *  @filename: tmp102.c
  *  @author: Pavan Shiralagi
  *  @description: Reads temperature value from tmp102 using i2c
+ *	@reference: https://opensource.com/article/19/4/interprocess-communication-linux-storage
 */
 
 #include <stdio.h>
